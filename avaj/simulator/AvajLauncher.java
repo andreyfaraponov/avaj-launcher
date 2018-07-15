@@ -15,6 +15,9 @@ public class AvajLauncher {
                 parser.SetFileName(args[0]);
                 WeatherTower tower = new WeatherTower();
                 int flyWeatherChangeCount = parser.getWeatherChanges();
+                if (flyWeatherChangeCount < 0) {
+                    throw new Exception("Weather changes count can't be below zero.");
+                }
                 Flyable parseFlyObj;
                 while (parser.input.hasNext()) {
                     parseFlyObj = parser.getFlyable();
@@ -25,10 +28,7 @@ public class AvajLauncher {
                 System.out.println("Error: Program expected 1 argument with file name");
             }
         } catch (Exception ex) {
-            // System.out.println(ex.getMessage());
-            System.out.println(ex.getClass());
-            // System.out.println(ex.getLocalizedMessage());
-            System.out.println("Program stoped with an error");
+            System.out.println("Program stoped with an error: " + ex.getMessage());
         }
     }
 }
