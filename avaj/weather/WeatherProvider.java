@@ -6,7 +6,7 @@ import java.util.*;
 
 public class WeatherProvider {
     private static WeatherProvider weatherProvider  = null;
-    private final String[] weather;
+    private static String[] weather;
 
     private WeatherProvider() {
         weather = new String[]{"SUN", "RAIN", "FOG", "SNOW"};
